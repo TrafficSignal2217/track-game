@@ -22,6 +22,7 @@ enum Tiles {
     ITEM = 3,
 };
 
+// Each number represents a level tile that can be placed and is replaced with the corresponding character when printed.
 map<int, char> Tile_Map = {
     { 0, ' ' },
     { 1, 'H' },
@@ -34,7 +35,7 @@ class Cursor {
     public:
         int pos[2] = {static_cast<int>(LEVEL_WIDTH * 0.5), static_cast<int>(LEVEL_HEIGHT * 0.5)};
         char face = 'X';
-    bool visible = false;
+    bool visible = true;
 };
 
 class Track {

@@ -1,4 +1,4 @@
-#include "../include/helper_functions.h"
+#include "../include/helper_functions.hpp"
 
 float clamp(float num, float min, float max) {
     if (num < min) return min;

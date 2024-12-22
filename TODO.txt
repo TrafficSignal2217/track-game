@@ -1,0 +1,12 @@
+
+
+Placing tracks
+Deleting tracks
+Selecting different tracks
+UI that shows what type of track is selected
+items that move along the tracks
+item source
+item 
+
+
+Come up with better name for the console_string_functions API

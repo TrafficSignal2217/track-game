@@ -5,8 +5,11 @@ Deleting tracks
 Selecting different tracks
 UI that shows what type of track is selected
 items that move along the tracks
-item source
-item 
+items come from source
+items go to finish
+Winning and losing if you bring all the items to the finish
+
+Potentially build things and combine items like an assembly line
 
 
 Come up with better name for the console_string_functions API

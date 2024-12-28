@@ -13,9 +13,9 @@ using namespace std;
 void update() {
     //------------------------------ Render the Game ------------------------------//
     // Render the gui surface
-    Gui_Screen[gui_tile_under_cursor_position()][0] = Tile_Map[Level_Tiles[cursor.pos[1]][cursor.pos[0]]];
+    Gui_Screen[GUI_TILE_UNDER_CURSOR_YPOS][0] = Tile_Map[Level_Tiles[cursor.pos[1]][cursor.pos[0]]];
     for (int i = 0; i < GUI_HEIGHT; i++) {
-        if (i == gui_tile_under_cursor_position()) {
+        if (i == GUI_TILE_UNDER_CURSOR_YPOS) {
             Gui_Screen[i][0] = Tile_Map[Level_Tiles[cursor.pos[1]][cursor.pos[0]]];
         }
     }
@@ -65,16 +65,17 @@ void update() {
     }
 
     for (int i = 0; i < input.length(); i++) {
-        if ((input[i] == 'd') || (input[i] == ';')) {
+        //// Detect movement input ////
+        if ((input[i] == 'd') || (input[i] == ';')) { // Move right
             cursor.pos[0] = clamp(cursor.pos[0] + 1, 0, LEVEL_WIDTH - 1);
         }
-        else if ((input[i] == 'a') || (input[i] == 'j')) {
+        else if ((input[i] == 'a') || (input[i] == 'j')) { // Move left
             cursor.pos[0] = clamp(cursor.pos[0] - 1, 0, LEVEL_WIDTH - 1);
         }
-        else if ((input[i] == 'w') || (input[i] == 'k')) {
+        else if ((input[i] == 'w') || (input[i] == 'k')) { // Move up
             cursor.pos[1] = clamp(cursor.pos[1] - 1, 0, LEVEL_HEIGHT - 1);
         }
-        else if ((input[i] == 's') || (input[i] == 'l')) {
+        else if ((input[i] == 's') || (input[i] == 'l')) { // Move down
             cursor.pos[1] = clamp(cursor.pos[1] + 1, 0, LEVEL_HEIGHT - 1);
         }
     }
@@ -105,13 +106,13 @@ int main() {
                 Gui_Screen[i][j] = ' ';
             }
             if (j == 0) {
-                if (i == gui_tile_under_cursor_position() - 1) {
+                if (i == GUI_TILE_UNDER_CURSOR_YPOS - 1) {
                     Gui_Screen[i][0] = 'v';
                 }
-                else if (i == gui_tile_under_cursor_position()) {
+                else if (i == GUI_TILE_UNDER_CURSOR_YPOS) {
                     Gui_Screen[i][0] = '?';
                 }
-                else if (i == gui_tile_under_cursor_position() + 1) {
+                else if (i == GUI_TILE_UNDER_CURSOR_YPOS + 1) {
                     Gui_Screen[i][0] = '^';
                 }
                 else {
@@ -123,6 +124,14 @@ int main() {
             }
         }
     }
+    // Write text in the GUI
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 1, 0, "Track Game");
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 1, GUI_TILE_UNDER_CURSOR_YPOS, "< Selected");
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 4, GUI_TILE_UNDER_CURSOR_YPOS + 1, "Track");
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 6, GUI_TILE_UNDER_CURSOR_YPOS + 3, "H [h]");
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 6, GUI_TILE_UNDER_CURSOR_YPOS + 4, "I [i]");
+    write_text_on_screen(*Gui_Screen, GUI_WIDTH, 2, GUI_TILE_UNDER_CURSOR_YPOS + 7, "erase [ ]");
+
 
 
     //------------------------------ Run the game ------------------------------//

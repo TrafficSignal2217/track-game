@@ -3,8 +3,7 @@ This is a simple command-line game about placing conveyer belt tracks to bring
 the factory items from the source to the finish.
 
 Purpose:
-The purpose of this game is for me to learn how to code in C++. The game will
-probably suck.
+The purpose of this game is for me to learn how to code in C++.
 
 How the game will work:
 The left side of the screen will be the actual level, which is where the tracks
